@@ -1,0 +1,23 @@
+{
+  "name": "draper",
+  "version": "1.0.0",
+  "description": "Advanced Discord bot.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ItsSyfe/Draper.git"
+  },
+  "author": "Syfe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ItsSyfe/Draper/issues"
+  },
+  "homepage": "https://github.com/ItsSyfe/Draper#readme",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "enmap": "^5.2.4"
+  }
+}
