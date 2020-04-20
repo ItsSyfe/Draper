@@ -6,15 +6,6 @@ const client = new Discord.Client();
 const config = require("./config.json");
 client.config = config;
 
-console.log(
-  `
-  -------------------
-  Draper
-  Advance Discord bot created by Syfe
-  Syfe#6969
-  -------------------`
-);
-
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach((file) => {
