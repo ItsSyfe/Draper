@@ -36,6 +36,10 @@ module.exports = (client) => {
     channel.send(embedCreated);
   };
 
+  client.randomInt = (min, max) => {
+    return Math.floor(Math.random() * (max + 1 - min) + min);
+  };
+
   client.permlevel = (message) => {
     let permlvl = 0;
 

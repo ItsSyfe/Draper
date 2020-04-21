@@ -1,10 +1,10 @@
 exports.run = async (client, message, args) => {
   if (message.channel.name.includes("ticket-")) {
-    message.channel.delete();
     client.embedCreator(
       message.author,
       `Closed (#${message.channel.name}) in ${message.guild.name}.`
     );
+    message.channel.delete();
   } else {
     client.embedCreator(
       message.channel,

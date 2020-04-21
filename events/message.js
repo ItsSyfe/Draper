@@ -11,18 +11,19 @@ module.exports = async (client, message) => {
       level: 1,
     });
 
-    client.points.inc(key, "points");
+    let level = client.points.get(key, "level");
+    let xp = client.points.get(key, "points");
 
-    const curLevel = Math.floor(
-      0.1 * Math.sqrt(client.points.get(key, "points"))
-    );
+    randomPoints = client.randomInt(1, 12);
+    client.points.set(key, xp + randomPoints, "points");
 
-    if (client.points.get(key, "level") < curLevel) {
+    if (xp > level * 40) {
       client.embedCreator(
         message.channel,
-        `You've leveled up to level **${curLevel}**!`
+        `You've leveled up to level **${level + 1}**!`
       );
-      client.points.set(key, curLevel, "level");
+      client.points.set(key, level + 1, "level");
+      client.points.set(key, 0, "points");
     }
   }
 
