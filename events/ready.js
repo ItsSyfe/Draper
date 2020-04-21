@@ -2,7 +2,7 @@ module.exports = async (client) => {
   client.logger.log(
     `
   -------------------
-  Draper
+  Draper Canary
   Advance Discord bot created by Syfe
   Syfe#6969
   -------------------`,

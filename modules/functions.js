@@ -13,18 +13,25 @@ module.exports = (client) => {
     welcomeEnabled: "false",
   };
 
-  client.embedCreator = (channel, message) => {
+  client.embedCreator = (channel, message, thumbnailImage) => {
+    try {
+      if (!thumbnailImage.length)
+        thumbnailImage = "https://i.imgur.com/6vylgXy.png";
+    } catch (e) {
+      thumbnailImage = "https://i.imgur.com/6vylgXy.png";
+    }
+
     const embedCreated = new Discord.MessageEmbed()
       .setColor("#0099ff")
       .setAuthor(
-        "Draper",
-        "https://i.imgur.com/BZFhQYJ.png",
+        "Draper Canary",
+        "https://i.imgur.com/6vylgXy.png",
         "https://github.com/ItsSyfe/Draper"
       )
       .setDescription(message)
-      .setThumbnail("https://i.imgur.com/BZFhQYJ.png")
+      .setThumbnail(thumbnailImage)
       .setTimestamp()
-      .setFooter("Created by Syfe", "https://i.imgur.com/BZFhQYJ.png");
+      .setFooter("Created by Syfe", "https://i.imgur.com/6vylgXy.png");
 
     channel.send(embedCreated);
   };
