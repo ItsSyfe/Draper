@@ -1,5 +1,20 @@
-const tools = require("../tools");
+exports.run = async (client, message, args) => {
+  const msg = await client.embedCreator(
+    message.channel,
+    `Pong, Took ${client.ws.ping}ms!`
+  );
+};
 
-exports.run = (client, message, args) => {
-  tools.embedCreator(message.channel, "Pong!");
+exports.conf = {
+  enabled: true,
+  guildOnly: false,
+  aliases: [],
+  permLevel: "User",
+};
+
+exports.help = {
+  name: "ping",
+  category: "Miscelaneous",
+  description: "It like... Pings. Then Pongs. And it's not Ping Pong.",
+  usage: "ping",
 };
