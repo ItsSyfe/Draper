@@ -8,8 +8,13 @@ module.exports = async (client) => {
   -------------------`,
     "ready"
   );
-
-  client.user.setActivity(`${client.settings.get("default").prefix}help`, {
-    type: "LISTENING",
-  });
+  try {
+    client.user.setActivity(`${client.settings.get("default").prefix}help`, {
+      type: "LISTENING",
+    });
+  } catch (e) {
+    client.user.setActivity(`${client.guilds.cache.size} servers.`, {
+      type: "WATCHING",
+    });
+  }
 };
