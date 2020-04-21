@@ -1,6 +1,31 @@
 module.exports = async (client, message) => {
   if (message.author.bot) return;
 
+  if (message.guild) {
+    const key = `${message.guild.id}-${message.author.id}`;
+
+    client.points.ensure(`${message.guild.id}-${message.author.id}`, {
+      user: message.author.id,
+      guild: message.guild.id,
+      points: 0,
+      level: 1,
+    });
+
+    client.points.inc(key, "points");
+
+    const curLevel = Math.floor(
+      0.1 * Math.sqrt(client.points.get(key, "points"))
+    );
+
+    if (client.points.get(key, "level") < curLevel) {
+      client.embedCreator(
+        message.channel,
+        `You've leveled up to level **${curLevel}**!`
+      );
+      client.points.set(key, curLevel, "level");
+    }
+  }
+
   const settings = (message.settings = client.getSettings(message.guild));
 
   const prefixMention = new RegExp(`^<@!?${client.user.id}>( |)$`);

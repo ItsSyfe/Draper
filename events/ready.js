@@ -10,6 +10,6 @@ module.exports = async (client) => {
   );
 
   client.user.setActivity(`${client.settings.get("default").prefix}help`, {
-    type: "PLAYING",
+    type: "LISTENING",
   });
 };
