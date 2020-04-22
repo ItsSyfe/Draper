@@ -1,8 +1,5 @@
 exports.run = async (client, message, args) => {
-  const msg = await client.embedCreator(
-    message.channel,
-    `Pong, Took ${client.ws.ping}ms!`
-  );
+  await client.embedCreator(message.channel, `Pong, Took ${client.ws.ping}ms!`);
 };
 
 exports.conf = {

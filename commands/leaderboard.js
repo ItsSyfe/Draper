@@ -1,4 +1,11 @@
 exports.run = async (client, message, args) => {
+  client.points.ensure(`${message.guild.id}-${message.author.id}`, {
+    user: message.author.id,
+    guild: message.guild.id,
+    points: 0,
+    level: 1,
+  });
+
   const filtered = client.points
     .filter((p) => p.guild === message.guild.id)
     .array();
@@ -32,7 +39,7 @@ exports.conf = {
 
 exports.help = {
   name: "leaderboard",
-  category: "Levelling",
+  category: "Levels",
   description: "Shows the server level leaderboard.",
   usage: "leaderboard",
 };

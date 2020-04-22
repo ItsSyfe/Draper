@@ -1,4 +1,11 @@
 exports.run = async (client, message, args) => {
+  client.points.ensure(`${message.guild.id}-${message.author.id}`, {
+    user: message.author.id,
+    guild: message.guild.id,
+    points: 0,
+    level: 1,
+  });
+
   const key = `${message.guild.id}-${message.author.id}`;
   return client.embedCreator(
     message.channel,
@@ -18,7 +25,7 @@ exports.conf = {
 
 exports.help = {
   name: "level",
-  category: "Levelling",
+  category: "Levels",
   description: "Get's your xp and level.",
   usage: "level",
 };

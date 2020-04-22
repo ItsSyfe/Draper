@@ -1,7 +1,9 @@
 module.exports = async (client, message) => {
   if (message.author.bot) return;
 
-  if (message.guild) {
+  const settings = (message.settings = client.getSettings(message.guild));
+
+  if (settings.lvlsEnabled == "true" && message.guild) {
     const key = `${message.guild.id}-${message.author.id}`;
 
     client.points.ensure(`${message.guild.id}-${message.author.id}`, {
@@ -26,8 +28,6 @@ module.exports = async (client, message) => {
       client.points.set(key, 0, "points");
     }
   }
-
-  const settings = (message.settings = client.getSettings(message.guild));
 
   const prefixMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
   if (message.content.match(prefixMention)) {

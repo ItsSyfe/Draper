@@ -1,0 +1,2 @@
+node setup.js
+pause

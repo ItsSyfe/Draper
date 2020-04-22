@@ -7,31 +7,27 @@ module.exports = (client) => {
     modRole: "Moderator",
     adminRole: "Administrator",
     systemNotice: "true",
-    welcomeChannel: "welcome",
-    welcomeMessage:
-      "Say hello to {{user}}, everyone! We all need a warm welcome sometimes :D",
-    welcomeEnabled: "false",
+    lvlsEnabled: "false",
   };
 
   client.embedCreator = (channel, message, thumbnailImage) => {
     try {
-      if (!thumbnailImage.length)
-        thumbnailImage = "https://i.imgur.com/6vylgXy.png";
+      if (!thumbnailImage.length) thumbnailImage = client.user.avatarURL();
     } catch (e) {
-      thumbnailImage = "https://i.imgur.com/6vylgXy.png";
+      thumbnailImage = client.user.avatarURL();
     }
 
     const embedCreated = new Discord.MessageEmbed()
       .setColor("#0099ff")
       .setAuthor(
-        "Draper Canary",
-        "https://i.imgur.com/6vylgXy.png",
+        "Draper",
+        client.user.avatarURL(),
         "https://github.com/ItsSyfe/Draper"
       )
       .setDescription(message)
       .setThumbnail(thumbnailImage)
       .setTimestamp()
-      .setFooter("Created by Syfe", "https://i.imgur.com/6vylgXy.png");
+      .setFooter("Created by Syfe", client.user.avatarURL());
 
     channel.send(embedCreated);
   };
