@@ -2,7 +2,7 @@ module.exports = async (client) => {
   client.logger.log(
     `
   -------------------
-  Draper Canary
+  Draper
   Advance Discord bot created by Syfe
   Syfe#6969
   -------------------`,
@@ -16,10 +16,5 @@ module.exports = async (client) => {
       }
     );
     await client.user.setStatus("dnd");
-  } catch (e) {
-    client.user.setActivity(`${client.guilds.cache.size} servers.`, {
-      type: "WATCHING",
-    });
-    await client.user.setStatus("dnd");
-  }
+  } catch (e) {}
 };
