@@ -3,7 +3,8 @@ exports.run = async (client, message, args) => {
     message.mentions.users.first() ||
     client.users.cache.find((user) => user.username === args[0]) ||
     client.users.cache.get(args[0]);
-  if (!user) return client.embedCreator(message.channel, "User doesn't exist!");
+  if (!user)
+    return client.embedCreator(message.channel, "Please mention a user!");
   if (user === message.author)
     return client.embedCreator(
       message.channel,
@@ -15,11 +16,11 @@ exports.run = async (client, message, args) => {
       "I don't have permission to ban this user!"
     );
   const banReason = args.slice(1).join(" ");
-  message.guild.members.ban(user, [{ reason: banReason }]);
   client.embedCreator(
     message.channel,
     `Banned user ${user.name} for reason: ${banReason}`
   );
+  message.guild.member(user).ban({ reason: banReason });
 };
 
 exports.conf = {
