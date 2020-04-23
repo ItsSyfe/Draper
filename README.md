@@ -31,6 +31,11 @@ An advanced Discord Bot.
   - Added ticket command (ticket and close)
   - Added a levelling system (level and leaderboard)
   - Moderation commands (kick, and ban)
+- 2.2.0
+  - Stablility improvements and other bug fixes
+- 2.3.0
+  - Corona virus stats tracker!
+  - Temp mute!
 
 ## License
 
