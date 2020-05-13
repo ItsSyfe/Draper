@@ -22,7 +22,7 @@ module.exports = async (client, message) => {
     if (xp > level * 40) {
       client.embedCreator(
         message.channel,
-        `You've leveled up to level **${level + 1}**!`
+        `<@${message.author.id}>, You've leveled up to level **${level + 1}**!`
       );
       client.points.set(key, level + 1, "level");
       client.points.set(key, 0, "points");

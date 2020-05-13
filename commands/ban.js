@@ -18,7 +18,7 @@ exports.run = async (client, message, args) => {
   const banReason = args.slice(1).join(" ");
   client.embedCreator(
     message.channel,
-    `Banned user ${user.name} for reason: ${banReason}`
+    `🚫 Banned user ${user.name} for reason: ${banReason}`
   );
   message.guild.member(user).ban({ reason: banReason });
 };

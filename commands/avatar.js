@@ -7,11 +7,19 @@ exports.run = async (client, message, args) => {
     client.users.cache.get(args[0]) ||
     message.author;
 
-  client.embedCreator(
-    message.channel,
-    `Avatar for ${user.username}`,
-    user.displayAvatarURL()
-  );
+  const embedCreated = new Discord.MessageEmbed()
+    .setColor("#0099ff")
+    .setAuthor(
+      "Draper",
+      client.user.avatarURL(),
+      "https://github.com/ItsSyfe/Draper"
+    )
+    .setDescription(`Avatar for <@${user.id}>`)
+    .setImage(user.displayAvatarURL({ format: "png", dynamic: true }))
+    .setTimestamp()
+    .setFooter("Created by Syfe", client.user.avatarURL());
+
+  message.channel.send(embedCreated);
 };
 
 exports.conf = {

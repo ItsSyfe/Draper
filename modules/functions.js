@@ -10,6 +10,13 @@ module.exports = (client) => {
     lvlsEnabled: "false",
   };
 
+  client.checkDays = (date) => {
+    let now = new Date();
+    let diff = now.getTime() - date.getTime();
+    let days = Math.floor(diff / 86400000);
+    return days + (days == 1 ? " day" : " days") + " ago";
+  };
+
   client.embedCreator = (channel, message, thumbnailImage) => {
     try {
       if (!thumbnailImage.length) thumbnailImage = client.user.avatarURL();

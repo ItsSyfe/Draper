@@ -18,7 +18,7 @@ exports.run = async (client, message, args) => {
   const kickReason = args.slice(1).join(" ");
   client.embedCreator(
     message.channel,
-    `Kicked user ${user.name} for reason: ${kickReason}`
+    `🗡️ Kicked user ${user.name} for reason: ${kickReason}`
   );
   message.guild.member(user).kick({ reason: kickReason });
 };
